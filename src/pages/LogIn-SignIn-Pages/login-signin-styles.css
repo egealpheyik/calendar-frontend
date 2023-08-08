@@ -1,0 +1,209 @@
+.UsernameInput, .PasswordInput {
+    display: block;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    margin:10px;
+    color: var(--color);
+    outline: none;
+     background-color: #9191911f;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    font-size: 15px;
+    backdrop-filter: blur(15px);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.divInput{
+    display: flex;
+    justify-content: center;
+}
+
+.calender-name{  
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.loginElements{
+    margin: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container{
+    margin: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    
+}
+
+.login-registerButton{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.input {
+  display: block;
+  padding: 15px;
+  width: 100%;
+  margin: 2rem 0;
+  color: var(--color);
+  outline: none;
+  background-color: #9191911f;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  font-size: 15px;
+  backdrop-filter: blur(15px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+
+
+.login-registerButton{
+  background-color: #F5F5F5;  
+}
+
+
+
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0; 
+}
+
+:root {
+ font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+ line-height: 1.5;
+ font-weight: 400;
+
+ color-scheme: light dark;
+ color: rgba(255, 255, 255, 0.87);
+
+ font-synthesis: none;
+ text-rendering: optimizeLegibility;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ -webkit-text-size-adjust: 100%;
+}
+
+body{
+background: #121212;
+color: #ffffff;
+}
+.css-hyum1k-MuiToolbar-root{
+background-color: #164b60;
+}
+a {
+ font-weight: 500;
+ color: #164b60;
+ text-decoration: inherit;
+}
+a:hover {
+ color: #535bf2;
+}
+
+h1 {
+ font-size: 3.2em;
+ line-height: 1.1;
+}
+
+button {
+ border-radius: 8px;
+ border: 1px solid transparent;
+ padding: 0.6em 1.2em;
+ font-size: 1em;
+ font-weight: 500;
+ font-family: inherit;
+ background-color: #1a1a1a;
+ cursor: pointer;
+ transition: border-color 0.25s;
+}
+button:hover {
+ border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+ outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+
+ a:hover {
+   color: #747bff;
+ }
+ button {
+   background-color: #F5F5F5;
+ }
+}
+
+.logo {
+height: 23em;
+padding: 1.5em;
+will-change: filter;
+transition: filter 300ms;
+}
+.logo:hover {
+filter: drop-shadow(0 0 2em #1db954
+);
+}
+.logo.react:hover {
+filter: drop-shadow(0 0 2em #1db954
+);
+}
+
+@keyframes logo-spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+a:nth-of-type(2) .logo {
+  animation: logo-spin infinite 20s linear;
+}
+}
+
+.card {
+padding: 2em;
+}
+
+.read-the-docs {
+color: #888;
+}
+
+.true-login-inputs{
+display: none;
+}
+.wrong-login-inputs{
+display: block;
+}
+
+.login-registerChange{
+  margin: 20px;
+}
+
+.fullscreen{
+}

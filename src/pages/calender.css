@@ -1,0 +1,293 @@
+.calender{
+}
+
+.timePicker-off{
+    display: none !important;
+}
+.timePicker-on{
+    margin: 5%;
+    display: flex;
+}
+.calender-time{
+    height: 90%;
+    display: flex;
+}
+
+.column1{
+    width: 30%;
+}
+.column2{
+    
+    margin: 2%;
+    width: 55%;
+
+}
+.column3{
+    
+    color: black;
+    width: 25%;
+    background-color: #212121;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 2%;
+    
+    max-height: 800px;
+    overflow: auto;
+    overflow-x: hidden;
+    
+}
+.upcoming-title{
+    color: white;
+    text-align: center;
+}
+
+.fieldStyle {
+    display: block;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    margin:10px;
+    color: var(--color);
+    outline: none;
+     background-color: #9191911f;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    font-size: 15px;
+    backdrop-filter: blur(15px);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.css-10botns-MuiInputBase-input-MuiFilledInput-input{
+
+    border-radius: 8px;
+}
+.css-4pax7l-MuiPickersLayout-root{
+    background-color: rgb(26, 26, 29) !important;
+    
+}
+.add-event{
+    color: white;
+    background-color: #212121;
+    padding: 8%;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 8px;
+    
+}
+.show-event{
+    padding: 4%;
+    color: white;
+    background-color: #212121;
+    border-radius: 8px;
+    
+    
+    margin: 5%;
+}
+.empty{
+    display: none;
+}
+.register-warning{
+
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+    
+}
+.date{
+    margin: 5%;
+}
+.css-qa7bje-MuiButtonBase-root-MuiPickersDay-root{ 
+    color: white !important;
+}
+.css-qa7bje-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+    background-color: #1db954 !important;
+}
+.css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root{
+    color: white !important;
+    border-color:#1db954 !important;
+    border-width: 3px !important;
+}
+.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel{
+    font-weight: 1000 !important;
+    font-size: xx-large;
+    color: white !important;
+}
+.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon{
+    
+    color: white !important;
+}
+.css-1vooibu-MuiSvgIcon-root{
+    
+    color: white !important;
+}
+.css-1hbyad5-MuiTypography-root{
+    
+    color: white !important;
+}
+
+
+.css-mvmxd9-MuiTypography-root-MuiPickersToolbarText-root{
+    color: white !important;
+}
+.css-ihhycx-MuiTimePickerToolbar-amPmSelection .MuiTimePickerToolbar-ampmLabel{
+    color: white !important;
+}
+.css-1f43ekz-MuiTypography-root-MuiPickersToolbarText-root-MuiTimePickerToolbar-separator{
+    color: white !important;
+}
+.css-4f0ona-MuiClock-clock{
+    background-color: #ffffffb2 !important;
+}
+
+.css-umzx0k-MuiClock-pin{
+    background-color: #1db954 !important;
+}
+.css-d0vs79-MuiClockPointer-root{
+    background-color: #1db954 !important;
+}
+.css-eg3pzz-MuiClockPointer-thumb{
+    border: 16px solid #1db954 !important;
+}
+.css-12t0dn4-MuiClockPointer-thumb{
+    border: 16px solid #1db954 !important;
+}
+.css-d0vs79-MuiClockPointer-root{
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+    border: 2px solid #1db954 !important;
+    background-color: #1db954 !important;
+    color: white !important;
+}
+
+.importance0{
+    text-align: center;
+    border: 1px solid #90ee91;
+    background-color: rgba(64, 232, 78);
+    
+    border-radius: 4px;
+    margin-top: 8px !important;
+    padding: 5px;
+}
+.importance1{
+    text-align: center;
+    border: 1px solid #e65f0c;
+    background-color: #e6800c;
+    border-radius: 4px;
+    margin-top: 8px !important;
+    padding: 5px;
+}
+.importance2{
+    text-align: center;
+    border: 1px solid #d70909;
+    background-color: #ff0000;
+    border-radius: 4px;
+    margin-top: 8px !important;
+    padding: 5px;
+}
+
+.right-panel{
+    color: white;
+}
+.column2-events{
+    padding-left: 2%;
+    align-items: center;
+    display: flex;
+    border: 1px solid #1db954;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.edit-event{
+    margin-top: 15px;
+}
+.add-button {
+    -webkit-border-radius: 10 !important;
+    -moz-border-radius: 10 !important;
+    border-radius: 10px !important;
+    font-family: Arial !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    background: #c3073f !important;
+    padding: 8px 15px 8px 15px !important;
+    border: solid #ffffff 2px !important;
+    text-decoration: none !important;
+  }
+  
+  .add-button:hover {
+    background: #ff0000;
+    background-image: -webkit-linear-gradient(top, #ff0000, #ff0000);
+    background-image: -moz-linear-gradient(top, #ff0000, #ff0000);
+    background-image: -ms-linear-gradient(top, #ff0000, #ff0000);
+    background-image: -o-linear-gradient(top, #ff0000, #ff0000);
+    background-image: linear-gradient(to bottom, #ff0000, #ff0000);
+    text-decoration: none;
+  }
+.filter{
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+[toggle-color = "asd"]{
+    background-color: #1db954;
+    
+}
+[aria-pressed = "true"]{
+    font-weight: 700 !important;
+    background-color: #0f692f;
+}
+.css-10botns-MuiInputBase-input-MuiFilledInput-input{
+    background-color: white !important;
+    justify-self: flex-end !important;
+}
+.column2-3{
+    
+}
+.importance-input{
+}
+.column2-1{
+    padding: 3%;
+}
+.column2-2{
+    padding: 3%;
+}
+.column2-3{
+    padding: 3%;
+}
+.column2-4{
+    padding: 3%;
+}
+.select-add{
+    background-color: white;
+}
+.column2-name-date{
+    width: 60%;
+    
+}
+.delete-edit-buttons{
+    display: flex;
+}
+.delete-button{
+    margin-right: 4% !important;
+}
+.edit-button{
+}
+.edit-name{
+    margin: 2%;
+}
+.edit-desc{
+    margin: 2%
+}
+.edit-date{
+    margin: 2%
+}
+.edit-time{
+    margin: 2%
+}
+.css-cwhad8-MuiDateCalendar-root{
+    background-color: #212121;
+}
