@@ -55,3 +55,25 @@ export async function Register(data = {}) {
     return false;
   }
 }
+
+export async function ChangePasswordAPI(data = {}) {
+  try {
+    const response = await fetch(
+      "http://localhost:56935/api/loginregister/login",
+      {
+        method: "PATCH",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    ).then((response) => response.json());
+    console.log("login response: ", response);
+
+    return response;
+  } catch (exception) {
+    console.log(exception);
+    return false;
+  }
+}

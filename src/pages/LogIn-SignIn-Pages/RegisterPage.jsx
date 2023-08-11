@@ -5,8 +5,6 @@ import "../calender.css";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Switch from "@mui/material/Switch";
-import Paper from "@mui/material/Paper";
 import Fade from "@mui/material/Fade";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
@@ -43,7 +41,8 @@ export const RegisterPage = () => {
     <section className="container">
       <form>
         <div className="form-container">
-          <h1 className="opacity">Register</h1>
+          <img className="logo" src="src\images\logo4.png" alt="Logo"></img>
+          <h2 className="opacity">Register</h2>
           <div className="divInput">
             <input
               id="username"

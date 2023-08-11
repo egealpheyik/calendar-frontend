@@ -15,16 +15,41 @@ import { createContext } from "react";
 
 export const MyContext = createContext("");
 function App() {
-  const [userId, setUserId] = useState("");
+  // const [userId, setUserId] = useState("");
+  const userId = JSON.parse(localStorage.getItem("user"))?.userId;
+  // return (
+  //   <MyContext.Provider value={{ userId, setUserId }}>
+  //     <IntlProvider messages={{}} locale="tr" defaultLocale="tr">
+  //       <Router>
+  //         <Routes>
+  //           <Route path="/" element={<SignInPage />} />
+  //           <Route path="/register" element={<RegisterPage />} />
+  //           <Route path="/mainpage" element={<MainPage />} />
+  //           <Route path="/activities" element={<ActivitiesPage />} />
+  //         </Routes>
+  //       </Router>
+  //     </IntlProvider>
+  //   </MyContext.Provider>
+  // );
+
+  // 1 - log out button
+  // 2 - userId -> 0
+  // 3 -  route history.push('/')
+
+  console.log("USER ID : ", userId);
   return (
-    <MyContext.Provider value={{ userId, setUserId }}>
+    <MyContext.Provider value={{ userId }}>
       <IntlProvider messages={{}} locale="tr" defaultLocale="tr">
         <Router>
           <Routes>
-            <Route path="/" element={<SignInPage />} />
+            <Route path="/" element={userId ? <MainPage /> : <SignInPage />} />
+            <Route
+              path="/mainpage"
+              element={userId ? <MainPage /> : <SignInPage />}
+            />
+
+            {/* <Route path="/" element={<SignInPage />} /> */}
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/mainpage" element={<MainPage />} />
-            <Route path="/activities" element={<ActivitiesPage />} />
           </Routes>
         </Router>
       </IntlProvider>

@@ -13,21 +13,12 @@ import { addDays, setDefaultOptions } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { Typography, Grid, Button, FormControlLabel } from "@mui/material";
 import { useState } from "react";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
 import "./mainpage-functions.jsx";
 import {
   AddEvent,
@@ -35,23 +26,14 @@ import {
   DeleteEvent,
   convertData,
 } from "./mainpage-functions.jsx";
-import { CheckBox, Highlight } from "@mui/icons-material";
-import Badge from "@mui/material/Badge";
-import { PickersDay } from "@mui/x-date-pickers";
-import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
 import { GetUpcomingEvents } from "./Upcoming.jsx";
 import { convertToDate } from "./dateConverter.jsx";
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import { MyDialog } from "./Diolog.jsx";
 import { MyEditDialog } from "./EditDialog.jsx";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 setDefaultOptions({ locale: enGB });
 
 export const MainPage = () => {
@@ -59,15 +41,12 @@ export const MainPage = () => {
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedDateDate, setSelectedDateDate] = useState(null);
-  const [age, setAge] = React.useState("");
   const [showAddEvent, setShowAddEvent] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
   const [events, setEvents] = useState([]);
   const [checked, setChecked] = useState(false);
   const [difficulity, setDifficulity] = useState(2);
-  const [highlightedDays, setHighlightedDays] = useState([1, 2, 5]);
   const [upcomingEvents, setUpcomingEvents] = useState(null);
-  const [isInputsValid, setIsInputsValid] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [value, setValue] = useState("importance");
   const [importance, setImportance] = useState(1);
@@ -84,25 +63,6 @@ export const MainPage = () => {
   }, [isAdded, importance]);
 
   console.log(events);
-
-  const handleDelete = (event) => {
-    console.log("here func", event);
-    DeleteEvent(event);
-  };
-
-  // debugger;
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDeleteClose = () => {
-    setOpen(false);
-  };
-
-  const handleChange = () => {
-    setChecked(!checked);
-    console.log(!checked);
-  };
 
   const Upcoming = async (imp) => {
     const events = await GetUpcomingEvents(new Date(), imp);
@@ -148,14 +108,6 @@ export const MainPage = () => {
     return e;
   }
 
-  function onDeleteClick() {
-    console.log("nkl");
-  }
-
-  async function getEvents() {
-    //GetEvents()//userid ve date olmalı, locale kaydet önce
-    GetEvents();
-  }
   const onDifficulityChange = (e) => {
     setDifficulity(e.target.value);
   };
@@ -198,6 +150,10 @@ export const MainPage = () => {
   console.log(events);
   useEffect(() => {
     console.log("renderer");
+    console.log(
+      "USER ID - mainpage - > ",
+      JSON.parse(localStorage.getItem("user")).userId
+    );
   }, [events]);
   const handleValue = (event, newAlignment) => {
     setValue(newAlignment);
@@ -213,6 +169,13 @@ export const MainPage = () => {
     //Upcoming(importance);
     console.log("events after update:", upcomingEvents);
     //setUpcomingEvents(!upcomingEvents);
+  };
+
+  const onLogOut = () => {
+    console.log("hheeeheheh");
+    localStorage.removeItem("user");
+    //localStorage.setItem("id", 0);
+    window.open("/", "_self");
   };
 
   return (
@@ -327,16 +290,6 @@ export const MainPage = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid>
-                {" "}
-                <Typography>Auto-finish when</Typography>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={handleChange}
-                  id="auto-finish"
-                ></input>
-              </Grid>
               <Button
                 className="add-button"
                 variant="text"
@@ -344,7 +297,6 @@ export const MainPage = () => {
               >
                 Add Event
               </Button>
-              <Typography>Add Event</Typography>
             </Grid>
 
             <Grid className={showAddEvent ? "empty" : "show-event"}>
@@ -358,9 +310,13 @@ export const MainPage = () => {
                     className="column2-events"
                   >
                     <Grid className="column2-name-date">
-                      <Typography>{item.eventName}</Typography>
-                      <Typography>{getFullDate(item.startDate)} - </Typography>
+                      <Typography>Name: {item.eventName}</Typography>
+                      <Typography>Description: {item.description}</Typography>
                       <Typography>
+                        Date: {getFullDate(item.startDate)}
+                      </Typography>
+                      <Typography>
+                        Time:
                         {getFullTime(item.time)}.
                         {new Date(item.time).getMinutes()}
                       </Typography>
@@ -373,51 +329,25 @@ export const MainPage = () => {
                         upcomingStateFunc={(e) => setUpcomingEvents(e)}
                       />
                       <MyEditDialog item={item} index={index}></MyEditDialog>
-                      {/* <Button
-                        variant="contained"
-                        onClick={handleClickOpen}
-                        startIcon={<DeleteIcon />}
-                        color="error"
-                      >
-                        Delete
-                      </Button>
-                      <Dialog
-                        key={`${item.eventId}-${index}`}
-                        id={`${item.eventId}-${index}`}
-                        open={open}
-                        onClose={handleDeleteClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
-                        <DialogTitle id="alert-dialog-title">
-                          {"Delete Selected Event?"}
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText id="alert-dialog-description">
-                            buraya event bilgileri yaz
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button onClick={handleDeleteClose}>Cancel</Button>
-
-                          <Button
-                            // onClick={handleDelete(item)}
-                            onClick={() => {
-                              console.log("here", item);
-                              DeleteEvent(item);
-                            }}
-                            autoFocus
-                          >
-                            ggg
-                          </Button>
-                        </DialogActions>
-                      </Dialog> */}
                     </Grid>
                   </Grid>
                 ))}
             </Grid>
           </Grid>
           <Grid className="column3">
+            <Button
+              onClick={onLogOut}
+              className="logoutbutton"
+              style={{
+                marginLeft: "50%",
+                marginBottom: "4%",
+                alignItems: "center",
+                display: "flex",
+              }}
+            >
+              Log out
+              <LogoutIcon />
+            </Button>
             <Box>
               <Grid className="filter">
                 <Typography>Filter by</Typography>
@@ -443,7 +373,12 @@ export const MainPage = () => {
                 {upcomingEvents?.map((item) => {
                   let importance = "importance" + item.importance;
                   return (
-                    <Grid className="right-panel" key={item.eventId}>
+                    <Grid
+                      style={{ cursor: "pointer" }}
+                      className="right-panel"
+                      key={item.eventId}
+                      onClick={() => onDateChange(item.startDate)}
+                    >
                       <Typography className={importance}>
                         {item.eventName}, {convertToDate(item.startDate)}{" "}
                       </Typography>
@@ -451,54 +386,10 @@ export const MainPage = () => {
                   );
                 })}
               </Grid>
-              {/* <Grid className="deleteButton">
-                <Button
-                  variant="contained"
-                  onClick={handleClickOpen}
-                  startIcon={<DeleteIcon />}
-                  color="error"
-                >
-                  Delete
-                </Button>
-                {/* <Dialog
-                  open={open}
-                  onClose={handleDeleteClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">
-                    {"Delete Selected Event?"}
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      buraya event bilgileri yaz
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleDeleteClose}>bb</Button>
-                    <Button
-                      onClick={() => {
-                        console.log("here", item);
-                        DeleteEvent(item);
-                      }}
-                      autoFocus
-                    >
-                      Delete
-                    </Button>
-                  </DialogActions>
-                </Dialog> 
-              </Grid> */}
             </Box>
           </Grid>
         </Grid>
       </LocalizationProvider>
-
-      {/* <LocalizationProvider dateAdapter={AdapterDateFns}>     */}
-
-      {/* <div className="calender">
-    <StaticDatePicker />
-   </div>  */}
-      {/* </LocalizationProvider> */}
     </div>
   );
 };
