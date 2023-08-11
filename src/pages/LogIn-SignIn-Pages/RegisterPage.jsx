@@ -12,6 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 export const RegisterPage = () => {
   const [showWarning, setShowWarning] = useState(false);
+  const [showSuccessfullInfo, setshowSuccessfullInfo] = useState(false);
+
   function onRegisterClick(e) {
     e.preventDefault();
 
@@ -21,7 +23,21 @@ export const RegisterPage = () => {
         document.getElementById("password").value
       )
     );
-    if (isRegister) setShowWarning(true);
+    isRegister.then(
+      (result) => {
+        console.log("res", result);
+        if (result) {
+          setShowWarning(true);
+          setshowSuccessfullInfo(false);
+        } else {
+          setShowWarning(false);
+          setshowSuccessfullInfo(true);
+        }
+      },
+      (error) => console.log("err", error)
+    );
+    //console.log("isr", isRegister);
+    //if (!isRegister) setShowWarning(true);
   }
   return (
     <section className="container">
@@ -53,7 +69,7 @@ export const RegisterPage = () => {
           <div className="login-registerChange">
             <a href="/">Already have an account? Log in</a>
           </div>
-          <Box sx={{ height: 180 }}>
+          <Box sx={{ height: 70 }}>
             <Box sx={{ display: "flex" }}>
               <Fade in={showWarning}>
                 {
@@ -64,6 +80,23 @@ export const RegisterPage = () => {
                       className="register-warning"
                     >
                       This username is used by another user.
+                    </Alert>
+                  </Stack>
+                }
+              </Fade>
+            </Box>
+          </Box>
+          <Box sx={{ height: 70 }}>
+            <Box sx={{ display: "flex" }}>
+              <Fade in={showSuccessfullInfo}>
+                {
+                  <Stack sx={{ width: "100%" }} spacing={2}>
+                    <Alert
+                      variant="filled"
+                      severity="info"
+                      className="register-success"
+                    >
+                      User created.
                     </Alert>
                   </Stack>
                 }

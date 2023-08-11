@@ -4,11 +4,14 @@ import "./login-signin-styles.css";
 import { Login, convertData } from "./login-register-functions";
 import * as functions from "../../ActiveUser.jsx";
 import { Typography } from "@mui/material";
+import { MyContext } from "../../App";
+import { useContext } from "react";
 
 export const SignInPage = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [wrongUsernameOrPassword, setWrongUsernameOrPassword] = useState(false);
+  const { userId, setUserId } = useContext(MyContext);
 
   async function onLoginClick(e) {
     e.preventDefault();
@@ -19,11 +22,14 @@ export const SignInPage = () => {
         document.getElementById("password").value
       )
     );
-    if (!loginResponse) {
+    if (loginResponse.userId == 0) {
       setWrongUsernameOrPassword(true);
     } else {
+      window.open("/mainpage");
+      console.log("aaa", loginResponse.userId);
       console.log(loginResponse);
       localStorage.setItem("user", JSON.stringify(loginResponse));
+      //setUserId(JSON.stringify(loginResponse));
       //getUserInfo(loginResponse["userId"], loginResponse["userName"], loginResponse["password"]);
       //functions.setUserId --> buradan devam et
     }
